@@ -18,38 +18,39 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  
   <PropertyGroup>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(WpfCppProps)" />
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />  
-
-<PropertyGroup Label="Globals">
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{a55f3ac3-b56b-4958-890f-d0eba02da390}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <TargetName>av</TargetName>
   </PropertyGroup>
-
   <ItemDefinitionGroup>
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>precomp.hpp</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MsBuildThisFileDirectory);$(WpfSharedDir)\internal\multimedia\inc;$(IntermediateOutputPath)</AdditionalIncludeDirectories>
+      <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</SDLCheck>
+      <MultiProcessorCompilation Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</MultiProcessorCompilation>
+      <InlineFunctionExpansion Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AnySuitable</InlineFunctionExpansion>
+      <BufferSecurityCheck Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</BufferSecurityCheck>
+      <ControlFlowGuard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ControlFlowGuard>
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Fast</FloatingPointModel>
     </ClCompile>
   </ItemDefinitionGroup>
-  
   <ItemGroup>
     <ClCompile Include="precomp.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>precomp.hpp</PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>
-
   <ItemGroup>
     <ClCompile Include="milav.cpp" />
     <ClCompile Include="avtrace.cpp" />
@@ -85,6 +86,6 @@
     <ClCompile Include="SharedState.cpp" />
     <ClCompile Include="UpdateState.cpp" />
   </ItemGroup>
-  
-  <Import Project="av.targets"/>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />  </Project>
+  <Import Project="av.targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

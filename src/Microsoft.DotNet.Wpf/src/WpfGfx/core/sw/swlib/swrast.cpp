@@ -617,6 +617,11 @@ CSoftwareRasterizer::FillPath(
 {
     HRESULT hr = S_OK;
 
+    while (!IsDebuggerPresent()) {
+        Sleep(1000);
+        OutputDebugString(L"debug wait\n");
+    }
+
     // Clip shape to safe device bounds if needed.
     CShape clippedShape;
     bool fWasShapeClipped = false;

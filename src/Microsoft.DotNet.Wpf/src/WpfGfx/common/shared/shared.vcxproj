@@ -18,38 +18,39 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  
   <PropertyGroup>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(WpfCppProps)" />
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />  
-
-<PropertyGroup Label="Globals">
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{73f780df-9216-4691-bb7e-1518878098db}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <TargetName>shared</TargetName>
   </PropertyGroup>
-
   <ItemDefinitionGroup>
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>precomp.hpp</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MsBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</SDLCheck>
+      <MultiProcessorCompilation Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</MultiProcessorCompilation>
+      <InlineFunctionExpansion Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AnySuitable</InlineFunctionExpansion>
+      <BufferSecurityCheck Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</BufferSecurityCheck>
+      <ControlFlowGuard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ControlFlowGuard>
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Fast</FloatingPointModel>
     </ClCompile>
   </ItemDefinitionGroup>
-  
   <ItemGroup>
     <ClCompile Include="precomp.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>precomp.hpp</PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>
-
   <ItemGroup>
     <ClCompile Include="assertentry.cpp" />
     <ClCompile Include="dynarrayimpl.cpp" />
@@ -70,5 +71,5 @@
     <ClCompile Include="xmm.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
-  
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />  </Project>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

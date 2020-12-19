@@ -806,6 +806,11 @@ HRESULT CSwRenderTargetSurface::DrawPathInternal(
 
     Assert(m_pIInternalSurface);
 
+    while (!IsDebuggerPresent()) {
+        Sleep(1000);
+        OutputDebugString(L"debug wait\n");
+    }
+
     HRESULT hr = S_OK;
 
     CRectClipper Clipper;

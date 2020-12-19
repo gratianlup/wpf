@@ -49,8 +49,12 @@ HRESULT DpiProvider::GetCurrentDpi(DpiScale* pDpiScale) const override
 
 BOOL DpiProvider::IsPerMonitorDpiAware() const override
 {
+#if 1
+    return false;
+#else
     DPI_AWARENESS_CONTEXT dpiContext = GetDpiAwarenessContext();
     return 
         DpiUtil::AreDpiAwarenessContextsEqual(dpiContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE) || 
         DpiUtil::AreDpiAwarenessContextsEqual(dpiContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+#endif
 }
